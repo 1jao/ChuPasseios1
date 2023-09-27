@@ -35,16 +35,17 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.Table = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NAME = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.EMAIL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PASSWORD = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btmenter
             // 
-            this.btmenter.Location = new System.Drawing.Point(59, 342);
+            this.btmenter.Location = new System.Drawing.Point(59, 339);
             this.btmenter.Name = "btmenter";
             this.btmenter.Size = new System.Drawing.Size(100, 33);
             this.btmenter.TabIndex = 0;
@@ -111,22 +112,24 @@
             this.textBox3.TabIndex = 6;
             this.textBox3.UseSystemPasswordChar = true;
             // 
-            // listView1
+            // Table
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Table.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
             this.NAME,
             this.EMAIL,
             this.PASSWORD});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(1, 1);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(308, 107);
-            this.listView1.TabIndex = 7;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
-            this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
+            this.Table.FullRowSelect = true;
+            this.Table.HideSelection = false;
+            this.Table.Location = new System.Drawing.Point(12, 12);
+            this.Table.Name = "Table";
+            this.Table.Size = new System.Drawing.Size(295, 103);
+            this.Table.TabIndex = 7;
+            this.Table.UseCompatibleStateImageBehavior = false;
+            this.Table.View = System.Windows.Forms.View.Details;
+            this.Table.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.Table.DoubleClick += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.Table.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
             // ID
             // 
@@ -143,6 +146,19 @@
             // PASSWORD
             // 
             this.PASSWORD.Text = "PASSWORD";
+            this.PASSWORD.Width = 80;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(34, 423);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(188, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Editar cadastro";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -151,7 +167,8 @@
             this.BackgroundImage = global::Chu_Passeios.Properties.Resources.Captura_de_tela_2023_09_20_103715;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Table);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -161,7 +178,8 @@
             this.Controls.Add(this.btmenter);
             this.DoubleBuffered = true;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Cadastro";
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,11 +194,12 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView Table;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader NAME;
         private System.Windows.Forms.ColumnHeader EMAIL;
         private System.Windows.Forms.ColumnHeader PASSWORD;
+        private System.Windows.Forms.Button button1;
     }
 }
 
