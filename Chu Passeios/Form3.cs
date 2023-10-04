@@ -18,6 +18,47 @@ namespace Chu_Passeios
             InitializeComponent();
         }
 
+        private void UpdateListView()
+        {
+            Table.Items.Clear();
+            Connect conn = new Connect();
+            SqlCommand sqlCom = new SqlCommand();
+
+            sqlCom.Connection = conn.ReturnConnection();
+            sqlCom.CommandText = "SELECT * FROM Cadastro_Cliente";
+
+            try
+            {
+                SqlDataReader dr = sqlCom.ExecuteReader();
+
+                //Enquanto for possível continuar a leitura das linhas que foram retornadas na consulta, execute.
+                while (dr.Read())
+                {
+                    int id = (int)dr["ID"];
+                    string name = (string)dr["NAME"];
+                    string email = (string)dr["Email"];
+                    string Senha = (string)dr["PASSWORD"];
+
+                    ListViewItem lv = new ListViewItem(id.ToString());
+                    lv.SubItems.Add(name);
+                    lv.SubItems.Add(email);
+                    lv.SubItems.Add(Senha);
+                    Table.Items.Add(lv);
+
+                }
+                dr.Close();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+            finally
+            {
+                conn.CloseConnection();
+            }
+        }
+
+
         private void btmenter_Click(object sender, EventArgs e)
         {
             Connect connection = new Connect();
@@ -47,6 +88,23 @@ namespace Chu_Passeios
             textBox3.Clear();
 
             UpdateListView();
+
+
+        }
+
+        private void btmdel_Click(object sender, EventArgs e)
+        {
+            UsuarioDAO usuario = new UsuarioDAO();
+            UsuarioDAO.deleteUser(ID);
+
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
