@@ -41,6 +41,7 @@
             this.EMAIL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PASSWORD = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
+            this.txtid = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btmenter
@@ -96,6 +97,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 4;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -160,6 +162,14 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(299, 155);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(100, 20);
+            this.txtid.TabIndex = 9;
+            this.txtid.TextChanged += new System.EventHandler(this.txtid_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,6 +177,7 @@
             this.BackgroundImage = global::Chu_Passeios.Properties.Resources.Captura_de_tela_2023_09_20_103715;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtid);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.textBox3);
@@ -200,6 +211,7 @@
         private System.Windows.Forms.ColumnHeader EMAIL;
         private System.Windows.Forms.ColumnHeader PASSWORD;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtid;
     }
 }
 

@@ -42,6 +42,7 @@
             this.btmforms2.TabIndex = 0;
             this.btmforms2.Text = "Realizar compra";
             this.btmforms2.UseVisualStyleBackColor = false;
+            this.btmforms2.Click += new System.EventHandler(this.btmforms2_Click);
             // 
             // button1
             // 

@@ -79,5 +79,15 @@ namespace Chu_Passeios.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_tela_2023_11_08_120907 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de tela 2023-11-08 120907", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

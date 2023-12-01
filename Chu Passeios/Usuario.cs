@@ -1,47 +1,80 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Chu_Passeios
 {
-    public class Usuario
+    internal class Usuario
     {
-        private int _iD;
-        private string _name;
-        private string _email;
-        private string _password;
+        private int _id;
+        private string _Nome;
+        private string _Email;
+        private string _Senha;
 
-        public Usuario(int iD, string name, string EMAIL, string password)
+        public Usuario(int id,
+                    string nome,
+                    string email,
+                    string senha
+                   )
         {
-
-            _iD = iD;
-            _name = name;
-            _email = EMAIL;
-            _password = password;
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Senha = senha;
+        }
+        public Usuario(
+                    string nome,
+                    string email,
+                    string senha
+                   )
+        {
+            Nome = nome;
+            Email = email;
+            Senha = senha;
         }
 
-        public string _ID
+        public int Id
         {
-            set { _ID = value; }
-            get { return _ID; }
+            set
+            {
+                _id = value;
+            }
+            get { return _id; }
         }
-        public string _nAME
+
+
+        public string Nome
         {
-            set { _nAME = value; }
-            get { return _nAME; }
+            set
+            {
+                
+                _Nome = value;
+            }
+            get { return _Nome; }
         }
-        public string _EMAIl
+
+
+        public string Email
         {
-            set { _email = value; }
-            get { return _email; }
+            set
+            {
+                _Email = value;
+            }
+            get { return _Email; }
         }
-        public string _passworD
+        public string Senha
         {
-            set { _password = value; }
-            get { return _password; }
+            set
+            { _Senha = value;
+            }
+            get { return _Senha; }
+
+
         }
+
     }
 }
 

@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,41 +24,26 @@ namespace Chu_Passeios
         }
         private void UpdateListView()
         {
-            Table.Items.Clear();
-            Connect conn = new Connect();
-            SqlCommand sqlCom = new SqlCommand();
 
-            sqlCom.Connection = conn.ReturnConnection();
-            sqlCom.CommandText = "SELECT * FROM Cadastro_Cliente";
+            Table.Items.Clear();
+            UsuarioDAO userDAO = new UsuarioDAO();
+            List<Usuario> users = userDAO.SelectUser();
 
             try
             {
-                SqlDataReader dr = sqlCom.ExecuteReader();
-
-                //Enquanto for possível continuar a leitura das linhas que foram retornadas na consulta, execute.
-                while (dr.Read())
+                foreach (Usuario user in users)
                 {
-                    int id = (int)dr["ID"];
-                    string name = (string)dr["NAME"];
-                    string email = (string)dr["Email"];
-                    string Senha = (string)dr["PASSWORD"];
-
-                    ListViewItem lv = new ListViewItem(id.ToString());
-                    lv.SubItems.Add(name);
-                    lv.SubItems.Add(email);
-                    lv.SubItems.Add(Senha);
+                    ListViewItem lv = new ListViewItem(user.Id.ToString());
+                    lv.SubItems.Add(user.Nome);
+                    lv.SubItems.Add(user.Email);
+                    lv.SubItems.Add(user.Senha);
                     Table.Items.Add(lv);
-
                 }
-                dr.Close();
+
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
-            }
-            finally
-            {
-                conn.CloseConnection();
             }
         }
 
@@ -68,43 +54,10 @@ namespace Chu_Passeios
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateListView();
+
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void btmenter_Click(object sender, EventArgs e)
-        {
-            string name = textBox1.Text, email = textBox2.Text, senha = textBox3.Text;
-            Connect conn = new Connect();
-            SqlCommand sqlCom = new SqlCommand();
-
-            sqlCom.Connection = conn.ReturnConnection();
-            sqlCom.Connection = conn.ReturnConnection();
-            sqlCom.CommandText = @"INSERT INTO Cadastro_Cliente VALUES(@NAME,@EMAIL,@PASSWORD)";
-            sqlCom.Parameters.AddWithValue("@NAME", textBox1.Text);
-            sqlCom.Parameters.AddWithValue("@EMAIL", textBox2.Text);
-            sqlCom.Parameters.AddWithValue("@PASSWORD", textBox3.Text);
-            sqlCom.ExecuteNonQuery();
-
-            MessageBox.Show("Cadastrado com sucesso",
-                            "AVISO",
-                             MessageBoxButtons.OK,
-                             MessageBoxIcon.Information);
-
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-
-            UpdateListView();
-        }
-
- 
-
-        private void Table_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             int index;
             index = Table.FocusedItem.Index;
@@ -112,99 +65,57 @@ namespace Chu_Passeios
             textBox1.Text = Table.Items[index].SubItems[1].Text;
             textBox2.Text = Table.Items[index].SubItems[2].Text;
             textBox3.Text = Table.Items[index].SubItems[3].Text;
+
+        }
+
+        private void Btmenter_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario(textBox1.Text, textBox2.Text, textBox3.Text);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            usuarioDAO.insertUsuario(usuario);
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+        }
+        private void btmenter_Click(object sender, EventArgs e)
+        {
+            // Your existing code...
+            Usuario usuario = new Usuario(textBox1.Text, textBox2.Text, textBox3.Text);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            usuarioDAO.insertUsuario(usuario);
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+        
+            // Code to switch to Form2
+            Form2 form2 = new Form2();
+            this.Hide(); // Hide the current form (Form1)
+            form2.Show(); // Show Form2
         }
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
             UpdateListView();
         }
-        private void Nome_Click(object sender, EventArgs e)
-        {
 
-        }
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            Border3DStyle.Flat.CompareTo(BorderStyle.None);
-        }
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-        private void pictureBox3_Click_1(object sender, EventArgs e)
-        {
-        }
-        private void textm_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-        }
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void table_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateListView();
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void listView1_DoubleClick(object sender, EventArgs e)
-        {
-            int index;
-            index = Table.FocusedItem.Index;
-            id = int.Parse(Table.Items[index].SubItems[0].Text);
-            textBox1.Text = Table.Items[index].SubItems[1].Text;
-            textBox2.Text = Table.Items[index].SubItems[2].Text;
-            textBox3.Text = Table.Items[index].SubItems[3].Text;
-        }
-
-        private void text3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void text2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void text1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Form3 form3 = new Form3();
             form3.Show();
+
+        }
+
+
+
+        private void txtid_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

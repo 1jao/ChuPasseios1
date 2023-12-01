@@ -10,22 +10,11 @@ using System.Windows.Forms;
 
 namespace Chu_Passeios
 {
-    public partial class Form2 : Form
+    public partial class Form4 : Form
     {
-        public Form2()
+        public Form4()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form3 form3 = new Form3();
-            form3.Show(); 
-        }
-
-        private void btmforms2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

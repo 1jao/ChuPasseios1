@@ -35,13 +35,12 @@
             this.lblpassword = new System.Windows.Forms.Label();
             this.lblemail = new System.Windows.Forms.Label();
             this.lblname = new System.Windows.Forms.Label();
-            this.btmenter = new System.Windows.Forms.Button();
             this.Table = new System.Windows.Forms.ListView();
-
             this.NAME = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.EMAIL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PASSWORD = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btmdel = new System.Windows.Forms.Button();
+            this.btnedit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox4
@@ -72,6 +71,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 13;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lblpassword
             // 
@@ -109,35 +109,22 @@
             this.lblname.TabIndex = 10;
             this.lblname.Text = "NOME:";
             // 
-            // btmenter
-            // 
-            this.btmenter.Location = new System.Drawing.Point(80, 341);
-            this.btmenter.Name = "btmenter";
-            this.btmenter.Size = new System.Drawing.Size(100, 33);
-            this.btmenter.TabIndex = 9;
-            this.btmenter.Text = "ENTRAR";
-            this.btmenter.UseVisualStyleBackColor = true;
-            this.btmenter.Click += new System.EventHandler(this.btmenter_Click);
-            // 
             // Table
             // 
             this.Table.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-          
             this.NAME,
             this.EMAIL,
             this.PASSWORD});
             this.Table.FullRowSelect = true;
             this.Table.HideSelection = false;
-            this.Table.Location = new System.Drawing.Point(292, 66);
+            this.Table.Location = new System.Drawing.Point(289, 78);
             this.Table.Name = "Table";
             this.Table.Size = new System.Drawing.Size(308, 100);
             this.Table.TabIndex = 17;
             this.Table.UseCompatibleStateImageBehavior = false;
             this.Table.View = System.Windows.Forms.View.Details;
-            // 
-            // ID
-            // 
-            
+            this.Table.SelectedIndexChanged += new System.EventHandler(this.Table_SelectedIndexChanged);
+            this.Table.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Table_MouseDoubleClick);
             // 
             // NAME
             // 
@@ -153,13 +140,23 @@
             // 
             // btmdel
             // 
-            this.btmdel.Location = new System.Drawing.Point(234, 341);
+            this.btmdel.Location = new System.Drawing.Point(198, 336);
             this.btmdel.Name = "btmdel";
-            this.btmdel.Size = new System.Drawing.Size(75, 23);
+            this.btmdel.Size = new System.Drawing.Size(79, 33);
             this.btmdel.TabIndex = 18;
             this.btmdel.Text = "delete";
             this.btmdel.UseVisualStyleBackColor = true;
             this.btmdel.Click += new System.EventHandler(this.btmdel_Click);
+            // 
+            // btnedit
+            // 
+            this.btnedit.Location = new System.Drawing.Point(92, 336);
+            this.btnedit.Name = "btnedit";
+            this.btnedit.Size = new System.Drawing.Size(100, 33);
+            this.btnedit.TabIndex = 19;
+            this.btnedit.Text = "editar";
+            this.btnedit.UseVisualStyleBackColor = true;
+            this.btnedit.Click += new System.EventHandler(this.btnedit_Click);
             // 
             // Form3
             // 
@@ -167,6 +164,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnedit);
             this.Controls.Add(this.btmdel);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.textBox4);
@@ -176,7 +174,6 @@
             this.Controls.Add(this.lblpassword);
             this.Controls.Add(this.lblemail);
             this.Controls.Add(this.lblname);
-            this.Controls.Add(this.btmenter);
             this.Name = "Form3";
             this.Text = "Editar";
             this.Load += new System.EventHandler(this.Form3_Load);
@@ -194,12 +191,12 @@
         private System.Windows.Forms.Label lblpassword;
         private System.Windows.Forms.Label lblemail;
         private System.Windows.Forms.Label lblname;
-        private System.Windows.Forms.Button btmenter;
         private System.Windows.Forms.ListView Table;
 
         private System.Windows.Forms.ColumnHeader NAME;
         private System.Windows.Forms.ColumnHeader EMAIL;
         private System.Windows.Forms.ColumnHeader PASSWORD;
         private System.Windows.Forms.Button btmdel;
+        private System.Windows.Forms.Button btnedit;
     }
 }
