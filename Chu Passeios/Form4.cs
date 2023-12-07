@@ -16,5 +16,17 @@ namespace Chu_Passeios
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //botão de Login
+            //pega a função Login no UserDAO
+            Usuario usuario = new Usuario("Email","Password");
+            usuario.Email = textBox1.Text;
+            usuario.Senha = Criptografia.CriptografarSenha(textBox2.Text);
+
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            usuarioDAO.loginUsuario(usuario);
+        }
     }
 }

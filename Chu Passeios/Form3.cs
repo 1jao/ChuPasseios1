@@ -22,19 +22,24 @@ namespace Chu_Passeios
 
         private void UpdateListView()
         {
+            //apaga a listview e atualiza os dados da tabela quando o updatelistview é chamado 
             Table.Items.Clear();
+
             UsuarioDAO userDAO = new UsuarioDAO();
             List<Usuario> users = userDAO.SelectUser();
+            //usa o funçao selectuser do UserDAO
 
             try
             {
                 foreach (Usuario user in users)
+                    
                 {
                     ListViewItem lv = new ListViewItem(user.Id.ToString());
                     lv.SubItems.Add(user.Nome);
                     lv.SubItems.Add(user.Email);
                     lv.SubItems.Add(user.Senha);
                     Table.Items.Add(lv);
+                    //ele pega a funçao listview item e coloca como "LV" e pega os subitens da tabela da classe user 
                 }
 
             }
@@ -49,43 +54,16 @@ namespace Chu_Passeios
 
         private void btmdel_Click(object sender, EventArgs e)
         {
-            Connect connection = new Connect();
-            SqlCommand sqlCommand = new SqlCommand();
-
-            sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"DELETE FROM Cadastro_Cliente WHERE ID = @id";
-
-            sqlCommand.Parameters.AddWithValue("@id", textBox4.Text);
-
-            try
-            {
-                sqlCommand.ExecuteNonQuery();
-                MessageBox.Show("Exclusão foi feita com sucesso",
-               "AVISO",
-               MessageBoxButtons.OK,
-               MessageBoxIcon.Information);
-                UpdateListView();
-            }
-            catch (Exception err)
-            {
-                throw new Exception("Erro: Problemas ao excluir usuário no banco.\n" + err.Message);
-            }
-            finally
-            {
-                connection.CloseConnection();
-            }
+            //botão de deletar
+            //pega a função delete no UserDAO
+            int id = int.Parse(textBox4.Text);
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            usuarioDAO.deleteUser(id);
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
         }
 
-        private void Table_DoubleClick(object sender, EventArgs e)
-        {
-            int index;
-            index = Table.FocusedItem.Index;
-
-            textBox1.Text = Table.Items[index].SubItems[1].Text;
-            textBox2.Text = Table.Items[index].SubItems[2].Text;
-            textBox3.Text = Table.Items[index].SubItems[3].Text;
-            textBox4.Text = Table.Items[index].SubItems[0].Text;
-        }
 
         private void Form3_Load(object sender, EventArgs e)
         {
@@ -114,34 +92,15 @@ namespace Chu_Passeios
 
         private void btnedit_Click(object sender, EventArgs e)
         {
-            Connect connection = new Connect();
-            SqlCommand sqlCommand = new SqlCommand();
-
-            sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"UPDATE Cadastro_Cliente SET Nome = @nome, Email = @email, Serie = @serie WHERE ID = @id";
-
-            sqlCommand.Parameters.AddWithValue("@id", textBox4.Text);
-            sqlCommand.Parameters.AddWithValue("@nome", textBox1.Text);
-            sqlCommand.Parameters.AddWithValue("@email", textBox2.Text);
-            sqlCommand.Parameters.AddWithValue("@serie", textBox3.Text);
-
-            try
-            {
-                sqlCommand.ExecuteNonQuery();
-                MessageBox.Show("A edição foi feita com sucesso",
-               "AVISO",
-               MessageBoxButtons.OK,
-               MessageBoxIcon.Information);
-                UpdateListView();
-            }
-            catch (Exception err)
-            {
-                throw new Exception("Erro: Problemas ao editar usuário no banco.\n" + err.Message);
-            }
-            finally
-            {
-                connection.CloseConnection();
-            }
+            //botão de Atualizar
+            //pega a função update no UserDAO
+            Usuario usuario = new Usuario(int.Parse(textBox4.Text),textBox1.Text, textBox2.Text,Criptografia.CriptografarSenha( textBox3.Text));
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            usuarioDAO.updateUsuario(usuario);
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            UpdateListView();
         }
     }
 }

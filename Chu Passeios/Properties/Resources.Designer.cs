@@ -63,6 +63,16 @@ namespace Chu_Passeios.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4016252 {
+            get {
+                object obj = ResourceManager.GetObject("4016252", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Captura_de_tela_2023_09_20_103715 {
             get {
                 object obj = ResourceManager.GetObject("Captura de tela 2023-09-20 103715", resourceCulture);

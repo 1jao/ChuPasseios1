@@ -41,16 +41,16 @@
             this.EMAIL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PASSWORD = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
-            this.txtid = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btmenter
             // 
-            this.btmenter.Location = new System.Drawing.Point(59, 339);
+            this.btmenter.Location = new System.Drawing.Point(59, 357);
             this.btmenter.Name = "btmenter";
             this.btmenter.Size = new System.Drawing.Size(100, 33);
             this.btmenter.TabIndex = 0;
-            this.btmenter.Text = "ENTRAR";
+            this.btmenter.Text = "Cadastrar";
             this.btmenter.UseVisualStyleBackColor = true;
             this.btmenter.Click += new System.EventHandler(this.btmenter_Click);
             // 
@@ -154,21 +154,24 @@
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(34, 423);
+            this.button1.Location = new System.Drawing.Point(24, 396);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(188, 23);
+            this.button1.Size = new System.Drawing.Size(174, 42);
             this.button1.TabIndex = 8;
             this.button1.Text = "Editar cadastro";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // txtid
+            // checkBox1
             // 
-            this.txtid.Location = new System.Drawing.Point(299, 155);
-            this.txtid.Name = "txtid";
-            this.txtid.Size = new System.Drawing.Size(100, 20);
-            this.txtid.TabIndex = 9;
-            this.txtid.TextChanged += new System.EventHandler(this.txtid_TextChanged);
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox1.Location = new System.Drawing.Point(60, 326);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(121, 17);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Termos Da empresa";
+            this.checkBox1.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -177,7 +180,7 @@
             this.BackgroundImage = global::Chu_Passeios.Properties.Resources.Captura_de_tela_2023_09_20_103715;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtid);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.textBox3);
@@ -211,7 +214,7 @@
         private System.Windows.Forms.ColumnHeader EMAIL;
         private System.Windows.Forms.ColumnHeader PASSWORD;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtid;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

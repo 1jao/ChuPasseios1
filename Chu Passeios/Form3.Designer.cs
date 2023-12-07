@@ -41,13 +41,15 @@
             this.PASSWORD = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btmdel = new System.Windows.Forms.Button();
             this.btnedit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(92, 281);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.Size = new System.Drawing.Size(24, 20);
             this.textBox4.TabIndex = 16;
             // 
             // textBox3
@@ -91,7 +93,7 @@
             this.lblemail.BackColor = System.Drawing.Color.Transparent;
             this.lblemail.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblemail.ForeColor = System.Drawing.Color.Transparent;
-            this.lblemail.Location = new System.Drawing.Point(102, 136);
+            this.lblemail.Location = new System.Drawing.Point(91, 136);
             this.lblemail.Name = "lblemail";
             this.lblemail.Size = new System.Drawing.Size(69, 19);
             this.lblemail.TabIndex = 11;
@@ -112,6 +114,7 @@
             // Table
             // 
             this.Table.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
             this.NAME,
             this.EMAIL,
             this.PASSWORD});
@@ -158,12 +161,29 @@
             this.btnedit.UseVisualStyleBackColor = true;
             this.btnedit.Click += new System.EventHandler(this.btnedit_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label1.Location = new System.Drawing.Point(91, 259);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(25, 19);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "ID";
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnedit);
             this.Controls.Add(this.btmdel);
             this.Controls.Add(this.Table);
@@ -198,5 +218,7 @@
         private System.Windows.Forms.ColumnHeader PASSWORD;
         private System.Windows.Forms.Button btmdel;
         private System.Windows.Forms.Button btnedit;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

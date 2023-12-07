@@ -23,6 +23,7 @@ namespace Chu_Passeios
             InitializeComponent();
         }
         private void UpdateListView()
+            //pega a função select da UserDAO
         {
 
             Table.Items.Clear();
@@ -58,6 +59,7 @@ namespace Chu_Passeios
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+            //ao dar doubleclick na tabela, ele vai colocar os dados nas textsbox
         {
             int index;
             index = Table.FocusedItem.Index;
@@ -67,49 +69,37 @@ namespace Chu_Passeios
             textBox3.Text = Table.Items[index].SubItems[3].Text;
 
         }
-
-        private void Btmenter_Click(object sender, EventArgs e)
-        {
-            Usuario usuario = new Usuario(textBox1.Text, textBox2.Text, textBox3.Text);
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            usuarioDAO.insertUsuario(usuario);
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-        }
         private void btmenter_Click(object sender, EventArgs e)
+            //Botão de cadastrar usuários 
         {
-            // Your existing code...
-            Usuario usuario = new Usuario(textBox1.Text, textBox2.Text, textBox3.Text);
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            usuarioDAO.insertUsuario(usuario);
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-        
-            // Code to switch to Form2
-            Form2 form2 = new Form2();
-            this.Hide(); // Hide the current form (Form1)
-            form2.Show(); // Show Form2
+            if (checkBox1.Checked)
+                // se o textbox não estiver selecionado, irá mostrar a mensagem "aceite os termos da empresa"
+            {
+                Usuario usuario = new Usuario(textBox1.Text, textBox2.Text,Criptografia.CriptografarSenha(textBox3.Text));
+                UsuarioDAO usuarioDAO = new UsuarioDAO();
+                usuarioDAO.insertUsuario(usuario);
+                textBox1.Clear();
+                textBox2.Clear();
+                textBox3.Clear();
+                Form2 form2 = new Form2();
+                this.Hide();
+                form2.Show();
+            }
+            else
+            {
+                MessageBox.Show("aceite os termos da empresa");
+            }
         }
-
         private void Form1_Load_1(object sender, EventArgs e)
+            // quando iniciar o form1 ele dá um updatelistview
         {
             UpdateListView();
         }
-
-
         private void button1_Click(object sender, EventArgs e)
+            //leva o usuário para o form3
         {
             Form3 form3 = new Form3();
             form3.Show();
-
-        }
-
-
-
-        private void txtid_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
